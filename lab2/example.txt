@@ -1,0 +1,21 @@
+// DSCH 2.6h
+// 29-Dec-19 12:14:54 PM
+// D:\VLSI\lab2\example.sch
+
+module example( A,B,out1);
+ input A,B;
+ output out1;
+ pmos #(24) pmos(out1,vdd,A); // 2.0u 0.12u
+ pmos #(24) pmos(out1,vdd,B); // 2.0u 0.12u
+ nmos #(24) nmos(out1,w4,A); // 1.0u 0.12u
+ nmos #(10) nmos(w4,vss,B); // 1.0u 0.12u
+endmodule
+
+// Simulation parameters in Verilog Format
+always
+#1000 A=~A;
+#2000 B=~B;
+
+// Simulation parameters
+// A CLK 10.000 10.000
+// B CLK 20.000 20.000

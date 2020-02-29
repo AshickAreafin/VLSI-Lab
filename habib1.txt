@@ -1,0 +1,21 @@
+// DSCH 2.6h
+// 28-Dec-19 09:35:29 PM
+// D:\VLSI\habib1.sch
+
+module habib1( clk2,clk1,out1);
+ input clk2,clk1;
+ output out1;
+ pmos #(1) pmos(out1,vdd,clk1); // 2.0u 0.12u
+ pmos #(1) pmos(out1,vdd,clk2); // 2.0u 0.12u
+ nmos #(1) nmos(out1,w4,clk1); // 1.0u 0.12u
+ nmos #(1) nmos(w4,vss,clk2); // 1.0u 0.12u
+endmodule
+
+// Simulation parameters in Verilog Format
+always
+#20 clk2=~clk2;
+#10 clk1=~clk1;
+
+// Simulation parameters
+// clk2 CLK 20.00 20.00
+// clk1 CLK 10.00 10.00

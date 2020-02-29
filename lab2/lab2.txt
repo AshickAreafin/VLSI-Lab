@@ -1,0 +1,21 @@
+// DSCH 2.6h
+// 23-Oct-19 09:21:39 AM
+// D:\VLSI\lab2.sch
+
+module lab2( clk1,clk2,out1);
+ input clk1,clk2;
+ output out1;
+ pmos #(24) pmos(out1,vdd,clk1); // 2.0u 0.12u
+ pmos #(24) pmos(out1,vdd,clk2); // 2.0u 0.12u
+ nmos #(24) nmos(out1,w4,clk1); // 1.0u 0.12u
+ nmos #(10) nmos(w4,vss,clk2); // 1.0u 0.12u
+endmodule
+
+// Simulation parameters in Verilog Format
+always
+#1000 clk1=~clk1;
+#2000 clk2=~clk2;
+
+// Simulation parameters
+// clk1 CLK 10.00 10.00
+// clk2 CLK 20.00 20.00
